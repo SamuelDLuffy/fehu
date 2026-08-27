@@ -1,0 +1,29 @@
+---
+// Google Analytics 4
+// O ID vem da variável de ambiente PUBLIC_GA_ID (arquivo .env).
+// Sem ID configurado, nada é injetado — assim o dev local não polui os dados do cliente.
+const gaId = import.meta.env.PUBLIC_GA_ID;
+---
+
+{gaId && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", gaId);
+    </script>
+  </>
+)}
+
+<!-- Rastreio de conversão: registra cliques em WhatsApp, Instagram e nos planos -->
+<script is:inline>
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-ga-event]");
+    if (!el || typeof window.gtag !== "function") return;
+    window.gtag("event", el.dataset.gaEvent, {
+      origem: el.dataset.gaLocal || "nao_informado",
+    });
+  });
+</script>

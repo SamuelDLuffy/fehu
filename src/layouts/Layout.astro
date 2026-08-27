@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import Analytics from "../components/Analytics.astro";
+
+const {
+  title = "FEHU — Arte & Estruturas em Metal",
+  description = "Fachadas em ACM, corrimãos, guarda-corpos e móveis industriais sob medida em Belo Horizonte e Congonhas — MG. Solicite seu orçamento.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <Analytics />
+  </head>
+  <body class="bg-steel-950 text-paper font-sans antialiased">
+    <slot />
+  </body>
+</html>

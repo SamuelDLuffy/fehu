@@ -1,0 +1,23 @@
+---
+// Recriação em SVG do logo FEHU (hexágono duplo + F).
+// Aproximação fiel ao material — substituir pelo vetor oficial quando o cliente enviar.
+const { class: className = "h-10 w-auto" } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 100 100" fill="none" aria-label="FEHU" role="img">
+  <!-- hexágono externo esquerdo (laranja) -->
+  <path
+    d="M38 8 L62 8 L62 16 L42 16 L26 44 L26 60 L42 88 L42 96 L34 96 L18 62 L18 42 Z"
+    fill="#f97316"
+    transform="rotate(0 50 50)"
+  />
+  <!-- hexágono externo direito (grafite) -->
+  <path
+    d="M62 4 L82 38 L82 62 L66 92 L46 92 L46 84 L60 84 L74 60 L74 42 L58 12 L46 12 L46 4 Z"
+    fill="#3f3f46"
+  />
+  <!-- F central: barra superior laranja, haste e barra do meio grafite -->
+  <path d="M40 30 L64 30 L58 40 L40 40 Z" fill="#f97316" />
+  <path d="M40 30 L48 30 L48 74 L40 66 Z" fill="#3f3f46" />
+  <path d="M48 48 L62 48 L57 57 L48 57 Z" fill="#3f3f46" />
+</svg>
